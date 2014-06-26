@@ -1,0 +1,64 @@
+#general info
+	checkoverlap
+
+#Box info
+#	Type x       y       z     Name           RepNo MotVolume Material   SDName  posX   posY   posZ   Ephi Etheta Epsi
+#	     mm      mm      mm                                                      mm     mm     mm     deg  deg    deg
+	B    920     920     920   BoxContainer   1     World     Vacuum     none    0      0      0      0    0      0
+	B    920     920     920   SteelBoxOut
+	B    900     900     900   SteelBoxIn 
+	B    900     900     900   BoraxBoxOut
+	B    700     700     700   BoraxBoxIn 
+	B    700     700     700   ParaffinBoxShell1
+	B    1200    1200    1000  BLTCYMin
+
+#Tubs info
+#	Type RMin RMax  Length Start Span Name              RepNo MotVolume    Material  SDName    posX posY  posZ   Ephi   Etheta Epsi  
+#	     mm   mm    mm     deg   deg                                                           mm   mm    mm     deg    deg    deg   
+#	                                                                                         P R    Phi   Z     
+#	                                                                                         S R    Phi   Theta 
+	T    0.   25    460    0     360  bsHole                  
+	T    0.   1     1      0     360  bsHole2                 
+	T    0.   25    80     0     360  Moderator         1     BoxContainer Paraffin  none      0    0     420    0      0      0
+	T    0.   350   0.2    0     360  MonitorA          1     ParaffinBox  Paraffin  MonitorSD 0    0    -50.1   0      0      0
+	T    0.   350   0.2    0     360  MonitorB          1     BoraxBox     Borax     MonitorSD 0    0   -350.1   0      0      0
+	T    0.   350   0.2    0     360  MonitorC          1     SteelBox     Steel_FZW MonitorSD 0    0   -450.1   0      0      0
+	T    0.   350   0.2    0     360  MonitorD          1     SteelBox     Steel_FZW MonitorSD 0    0   -459.9   0      0      0
+	T    0.   25    0.2    0     360  MonitorE          1     Moderator    Paraffin  MonitorSD 0    0     39.9   0      0      0
+	T    25   350   0.2    0     360  MonitorF          1     SteelBox     Steel_FZW MonitorSD 0    0    459.9   0      0      0
+
+#Sphere info
+#	      RMin  RMax  StartPhi SpanPhi StartThe SpanThe Name     RepNo MotVolume     Material     SDName posX posY posZ Ephi Etheta Epsi
+#	      mm    mm    deg      deg     deg      deg                                                      mm   mm   mm   deg  deg    deg
+#	                                                                                                   P R    Phi   Z     
+#	                                                                                                   S R    Phi   Theta 
+	Sph   0     50    0        360.    0.       180.    bsBall
+
+#BooelanSolid info
+#	Type type  vol1              vol2         Ephi Ethe Epsi PosX  PosY posZ   name              RepNo MotVolume    Material     SDName      posX posY posZ  Ephi   Etheta Epsi  
+#	                                          deg  deg  deg  mm    mm   mm                                                                   mm   mm   mm    deg    deg    deg   
+#	                                                       P R     Phi  Z                                                                  P R    Phi  Z    
+#	                                                       S R     Phi  Theta                                                              S R    Phi  Theta
+	BL   minus SteelBoxOut       SteelBoxIn   0    0    0    0     0    0      SteelBoxShell           
+	BL   minus SteelBoxShell     bsHole       0    0    0    0     0    230    SteelBox          1     BoxContainer Steel_FZW    none        0    0    0     0      0      0     
+	BL   minus BoraxBoxOut       BoraxBoxIn   0    0    0    0     0    0      BoraxBoxShell           
+	BL   minus BoraxBoxShell     bsHole       0    0    0    0     0    230    BoraxBox          1     BoxContainer Borax        none        0    0    0     0      0      0     
+	BL   minus ParaffinBoxShell1 bsBall       0    0    0    0     0    0      ParaffinBoxShell2       
+	BL   minus ParaffinBoxShell2 bsHole       0    0    0    0     0    230    ParaffinBox       1     BoxContainer Paraffin     none        0    0    0     0      0      0     
+	BL   minus bsBall            bsHole       0    0    0    0     0    230    LeadBall          1     BoxContainer Lead         none        0    0    0     0      0      0     
+
+#visual settings
+	VerboseLevel:    5
+	VISSETTING  #Keep this line to call Reset
+#	Name                 red    green  blue  
+	vis_SteelBox           1      1      0     
+	vis_BoraxBox           0      0      1     
+	vis_ParaffinBox        0.67   0      1     
+	vis_LeadBall           0      1      0     
+	vis_Moderator          0.67   0      1     
+	vis_MonitorA           1      0      0
+	vis_MonitorB           1      0      0
+	vis_MonitorC           1      0      0
+	vis_MonitorD           1      0      0
+	vis_MonitorE           1      0      0
+	vis_MonitorF           1      0      0

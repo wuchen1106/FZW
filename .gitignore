@@ -19,3 +19,16 @@
 *.exe
 *.out
 *.app
+
+# big directories
+output/
+fieldMaps/
+data/
+
+# automatically generated files
+logfile
+G4History.macro
+currentEvent.rndm
+currentRun.rndm
+cmdlog
+nohup.out
